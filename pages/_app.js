@@ -1,6 +1,7 @@
 import "@code-hike/mdx/dist/index.css"
 import Head from "next/head"
 import "../global.css"
+import "../custom-ch.css"
 
 function MyApp({ Component, pageProps }) {
   return (

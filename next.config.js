@@ -1,4 +1,4 @@
-const theme = require("shiki/themes/nord.json")
+const theme = require("./theme.js")
 const { remarkCodeHike } = require("@code-hike/mdx")
 
 const withMDX = require("@next/mdx")({

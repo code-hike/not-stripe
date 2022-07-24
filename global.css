@@ -93,6 +93,11 @@ h4 {
   color: rgb(26, 31, 54);
 }
 
+h4 a {
+  font-weight: 700;
+  font-size: 16px;
+}
+
 p {
   line-height: 26px;
   color: rgb(60, 66, 87);
