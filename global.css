@@ -92,6 +92,10 @@ h3,
 h4 {
   color: rgb(26, 31, 54);
 }
+h3,
+h4 {
+  font-weight: 600;
+}
 
 h4 a {
   font-weight: 700;
