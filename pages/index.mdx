@@ -4,13 +4,15 @@ import { Demo } from "../components/demo"
 
 # Prebuilt Checkout page
 
-<CH.Preview>
+<CH.Preview frameless>
 
 <Demo />
 
 </CH.Preview>
 
-```ruby server.rb
+<CH.Code>
+
+```rb server.rb
 require 'stripe'
 require 'sinatra'
 
@@ -41,6 +43,74 @@ post '/create-checkout-session' do
 end
 ```
 
+{/* prettier-ignore */}
+```html checkout.html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Buy cool new product</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+  </head>
+  <body>
+    <section>
+      <div class="product">
+        <img 
+          src="https://i.imgur.com/EHyR2nP.png" 
+          alt="The cover of Stubborn Attachments" 
+        />
+        <div class="description">
+          <h3>Stubborn Attachments</h3>
+          <h5>$20.00</h5>
+        </div>
+      </div>
+      <form action="/create-checkout-session" method="POST">
+        <button type="submit" id="checkout-button">Checkout</button>
+      </form>
+    </section>
+  </body>
+</html>
+```
+
+{/* prettier-ignore */}
+```html success.html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Thanks for your order!</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section>
+    <p>
+      We appreciate your business! 
+      If you have any questions, please email
+      <a href="mailto:orders@example.com">orders@example.com</a>.
+    </p>
+  </section>
+</body>
+</html>
+```
+
+{/* prettier-ignore */}
+```html cancel.html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Checkout canceled</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section>
+    <p>Forgot to add something to your cart? Shop around then come back to pay!</p>
+  </section>
+</body>
+</html>
+```
+
+</CH.Code>
+
 Explore a full, working code sample of an integration with [Stripe Checkout](https://stripe.com/docs/payments/checkout). The client- and server-side code redirects to a prebuilt payment page hosted on Stripe.
 
 Before you get started, confirm the payment methods you want to offer in your [payment method settings](https://dashboard.stripe.com/settings/payment_methods). We enable cards and other common payment methods for you by default, and we recommend that you enable additional payment methods that are relevant for your business and customers.
@@ -51,11 +121,11 @@ Before you get started, confirm the payment methods you want to offer in your [p
 
 ### Install the Stripe Ruby library
 
-Install the Stripe ruby gem and require it in your code. Alternatively, if you’re starting from scratch and need a Gemfile, download the project files using the link in the code editor.
-
 ```rb server.rb focus=4:7 mark=4:7
 
 ```
+
+Install the Stripe ruby gem and require it in your code. Alternatively, if you’re starting from scratch and need a Gemfile, download the project files using the link in the code editor.
 
 ---
 
@@ -71,11 +141,19 @@ Add an endpoint on your server that creates a [Checkout Session](https://stripe.
 
 ### Define a product to sell
 
+```rb server.rb focus=18:22 mark=18:22
+
+```
+
 Always keep sensitive information about your product inventory, such as price and availability, on your server to prevent customer manipulation from the client. Define product information when you create the Checkout Session using [predefined price IDs](https://stripe.com/docs/payments/accept-a-payment?platform=web&ui=checkout#create-product-prices-upfront) or on the fly with [price_data](https://stripe.com/docs/api/checkout/sessions/create#create_checkout_session-line_items-price_data).
 
 ---
 
 ### Choose the mode
+
+```rb server.rb focus=23 mark=23
+
+```
 
 Checkout has three modes: `payment`, `subscription`, or `setup`. Use `payment` mode for one-time purchases. Learn more about [subscription](https://stripe.com/docs/billing/subscriptions/build-subscriptions) and [setup](https://stripe.com/docs/payments/save-and-reuse?platform=checkout) modes in the docs.
 
@@ -83,11 +161,19 @@ Checkout has three modes: `payment`, `subscription`, or `setup`. Use `payment` m
 
 ### Supply success and cancel URLs
 
+```rb server.rb focus=24:25 mark=24:25
+
+```
+
 Specify URLs for success and cancel pages—make sure they’re publicly accessible so Stripe can redirect customers to them. You can also handle both the success and canceled states with the same URL.
 
 ---
 
 ### Redirect to Checkout
+
+```rb server.rb focus=27 mark=27
+
+```
 
 After creating the session, redirect your customer to the URL for the Checkout page returned in the response.
 
@@ -97,11 +183,19 @@ After creating the session, redirect your customer to the URL for the Checkout p
 
 ### Add a success page
 
+```html success.html focus=7:15 mark=7:15
+
+```
+
 Create a success page for the URL you provided as the Checkout Session success_url to display order confirmation messaging or order details to your customer. Stripe redirects to this page after the customer successfully completes the checkout.
 
 ---
 
 ### Add a canceled page
+
+```html cancel.html focus=7:11 mark=7:11
+
+```
 
 Add another page for `cancel_url`. Stripe redirects to this page when the customer clicks the back button in Checkout.
 
@@ -109,11 +203,19 @@ Add another page for `cancel_url`. Stripe redirects to this page when the custom
 
 ### Add an order preview page
 
+```html checkout.html focus=11:20 mark=11:20
+
+```
+
 Finally, add a page to show a preview of the customer’s order. Allow them to review or modify their order—as soon as they’re sent to the Checkout page, the order is final and they can’t modify it without creating a new Checkout Session.
 
 ---
 
 ### Add a checkout button
+
+```html checkout.html focus=21:23 mark=21:23
+
+```
 
 Add a button to your order preview page. When your customer clicks this button, they’re redirected to the Stripe-hosted payment page.
 
@@ -139,4 +241,4 @@ Handle requests for refunds by using the Stripe API or Dashboard.
 
 </CH.Scrollycoding>
 
-<div style={{ height: 999 }} />
+<div style={{ height: 99 }} />

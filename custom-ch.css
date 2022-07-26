@@ -1,5 +1,6 @@
 body {
   --ch-scrollycoding-sticker-width: 600px;
+  --ch-scrollycoding-code-min-height: 62vh;
 }
 
 .ch-scrollycoding {
@@ -12,6 +13,7 @@ body {
   border: 0;
   border-left: 4px solid transparent;
   box-shadow: inset 0 1px #e3e8ee;
+  margin: 0 0 0 -0.5rem;
 }
 
 .ch-scrollycoding-step-content[data-selected] {
@@ -24,4 +26,28 @@ body {
   background-color: unset !important;
   border-color: transparent !important;
   box-shadow: none;
+}
+
+.ch-code-multiline-mark {
+  background: #1a2652 !important;
+}
+
+.ch-code-multiline-mark-border {
+  background: none !important;
+}
+
+.ch-scrollycoding-sticker {
+  flex-flow: column-reverse;
+  gap: 0 !important;
+  background: var(--sail-color-blue-800);
+  border-radius: 4px;
+}
+
+.ch-scrollycoding-preview {
+  box-shadow: inset 0 -1px var(--sail-color-line-divider-dark);
+  border-radius: 0;
+}
+
+.ch-frame-buttons {
+  display: none;
 }
