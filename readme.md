@@ -1,5 +1,7 @@
 # Stripe Docs Clone
 
-A copy of [this guide from Stripe](https://stripe.com/docs/checkout/quickstart) using Code Hike.
+We use Next.js, MDX and Code Hike to build a copy of [this guide from Stripe](https://stripe.com/docs/checkout/quickstart).
 
-A how-to video is coming soon.
+Full how-to video: https://youtu.be/W2rJ7p-G63c
+
+Final result: https://not-stripe.vercel.app/

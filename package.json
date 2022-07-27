@@ -3,7 +3,7 @@
     "dev": "next"
   },
   "dependencies": {
-    "@code-hike/mdx": "0.7.0",
+    "@code-hike/mdx": "0.7.2",
     "@mdx-js/loader": "^2.1.2",
     "@next/mdx": "^12.2.2",
     "next": "^12.2.2",
